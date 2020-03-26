@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.com.buu.dailyfresh.dao.PcUacUserDao">
+<mapper namespace="cn.com.mjb.candyrebateadmin.dao.PcUacUserDao">
 
 	<resultMap id="BaseResultMap" type="cn.com.mjb.candyrebateadmin.module.domain.PcUacUser">
 		<id column="id" property="id" />
@@ -34,13 +34,6 @@
 	</sql>
 
 	<select id="findUserByAccount" parameterType="java.lang.String" resultMap="BaseResultMap">
-		select
-
-		<include refid="Base_Column_List"/>
-
-		FROM pc_uac_user
-
-		where user_name = #{}
 
 	</select>
 	
