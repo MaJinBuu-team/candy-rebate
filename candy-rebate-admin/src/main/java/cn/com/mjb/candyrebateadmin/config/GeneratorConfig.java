@@ -8,6 +8,11 @@ import com.github.flying.cattle.mdg.util.MySqlToJavaUtil;
 import java.sql.SQLException;
 import java.util.Date;
 
+/**
+ * 自动生成工具：mybatis-dsc-generator
+ *
+ * @author buu
+ */
 public class GeneratorConfig {
     // 基础信息：项目名、作者、版本
     public static final String PROJECT = "daily-fresh";

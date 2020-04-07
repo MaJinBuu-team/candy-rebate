@@ -1,4 +1,4 @@
-package cn.com.buu.dailyfresh.config;
+package cn.com.mjb.candyrebateadmin.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -12,12 +12,9 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
- * <p>自动生成工具：mybatis-dsc-generator</p>
  * Swagger核心配置文件
- * ========================
+ *
  * @author buu
- * @Date 2019年12月11日
- * ========================
  */
 @Configuration
 @EnableSwagger2

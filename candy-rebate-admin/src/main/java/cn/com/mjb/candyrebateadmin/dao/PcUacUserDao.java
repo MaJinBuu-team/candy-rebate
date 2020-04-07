@@ -5,12 +5,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * <p>自动生成工具：mybatis-dsc-generator</p>
+ * 操作员表数据访问层
  *
- * <p>说明： 操作员表数据访问层</p>
- *
- * @version: v1.0
- * @author: buu
+ * @author buu
  */
 @Mapper
 public interface PcUacUserDao extends BaseMapper<PcUacUser> {

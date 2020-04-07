@@ -13,12 +13,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * <p>自动生成工具：mybatis-dsc-generator</p>
+ * 操作员表实体类
  *
- * <p>说明： 操作员表实体类</P>
- *
- * @version: v1.0
- * @author: buu
+ * @author buu
  */
 @Data
 @EqualsAndHashCode(callSuper = false)

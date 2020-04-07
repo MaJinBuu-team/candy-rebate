@@ -1,6 +1,6 @@
 package cn.com.mjb.candyrebateadmin.service.uac.impl;
 
-import cn.com.buu.dailyfresh.module.vo.UacLoginVo;
+import cn.com.mjb.candyrebateadmin.module.vo.UacLoginVo;
 import cn.com.mjb.candyrebateadmin.utils.PubUtils;
 import cn.com.mjb.candyrebateadmin.dao.PcUacUserDao;
 import cn.com.mjb.candyrebateadmin.exception.UacBusinessException;

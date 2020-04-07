@@ -1,4 +1,4 @@
-package cn.com.buu.dailyfresh.module.vo;
+package cn.com.mjb.candyrebateadmin.module.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
