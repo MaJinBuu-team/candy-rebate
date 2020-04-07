@@ -1,7 +1,7 @@
 package cn.com.mjb.candyrebateadmin.controller.uac;
 
-import cn.com.buu.dailyfresh.module.vo.UacLoginVo;
 import cn.com.mjb.candyrebateadmin.module.vo.MessageBox;
+import cn.com.mjb.candyrebateadmin.module.vo.UacLoginVo;
 import cn.com.mjb.candyrebateadmin.service.uac.UacService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
