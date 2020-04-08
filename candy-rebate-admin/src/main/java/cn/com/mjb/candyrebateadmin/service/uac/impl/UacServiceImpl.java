@@ -2,7 +2,7 @@ package cn.com.mjb.candyrebateadmin.service.uac.impl;
 
 import cn.com.mjb.candyrebateadmin.module.vo.UacLoginVo;
 import cn.com.mjb.candyrebateadmin.utils.PubUtils;
-import cn.com.mjb.candyrebateadmin.dao.PcUacUserDao;
+import cn.com.mjb.candyrebateadmin.dao.UacWebUserDao;
 import cn.com.mjb.candyrebateadmin.exception.UacBusinessException;
 import cn.com.mjb.candyrebateadmin.module.domain.PcUacUser;
 import cn.com.mjb.candyrebateadmin.module.enums.UacErrorEnum;
@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 public class UacServiceImpl implements UacService {
 
     @Resource
-    private PcUacUserDao pcUacUserDao;
+    private UacWebUserDao pcUacUserDao;
 
     @Override
     public PcUacUser login(UacLoginVo uacLoginVo) {

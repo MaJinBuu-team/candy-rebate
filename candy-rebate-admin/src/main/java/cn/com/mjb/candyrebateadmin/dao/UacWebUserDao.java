@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @author buu
  */
 @Mapper
-public interface PcUacUserDao extends BaseMapper<PcUacUser> {
+public interface UacWebUserDao extends BaseMapper<PcUacUser> {
 
     PcUacUser findUserByAccount(String userAccount);
 
