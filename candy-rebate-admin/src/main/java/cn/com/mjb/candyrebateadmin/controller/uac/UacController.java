@@ -15,10 +15,10 @@ import javax.annotation.Resource;
 /**
  * 用户控制
  *
- * @author: buu
+ * @author buu
  */
 @RestController
-@RequestMapping("/fresh/uac")
+@RequestMapping("/candy/uac")
 @Slf4j
 public class UacController {
 
