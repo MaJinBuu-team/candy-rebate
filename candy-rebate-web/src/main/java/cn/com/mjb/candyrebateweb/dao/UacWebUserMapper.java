@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Mapper;
  * @author buu
  */
 @Mapper
-public interface UacUserMapper extends BaseMapper<UacWebUser> {
+public interface UacWebUserMapper extends BaseMapper<UacWebUser> {
 
     int findByLoginName(UacWebUser uacWebUser);
 

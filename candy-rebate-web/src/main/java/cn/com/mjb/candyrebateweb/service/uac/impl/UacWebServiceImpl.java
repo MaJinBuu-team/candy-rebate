@@ -1,6 +1,6 @@
 package cn.com.mjb.candyrebateweb.service.uac.impl;
 
-import cn.com.mjb.candyrebateweb.dao.UacUserMapper;
+import cn.com.mjb.candyrebateweb.dao.UacWebUserMapper;
 import cn.com.mjb.candyrebateweb.exception.UacWebBusinessException;
 import cn.com.mjb.candyrebateweb.module.domain.UacWebUser;
 import cn.com.mjb.candyrebateweb.module.dto.UacWebLoginDto;
@@ -11,7 +11,6 @@ import cn.com.mjb.candyrebateweb.module.enums.UacUserStatusEnum;
 import cn.com.mjb.candyrebateweb.service.common.RedisService;
 import cn.com.mjb.candyrebateweb.service.uac.UacWebService;
 import cn.com.mjb.candyrebateweb.utils.Md5Util;
-import cn.com.mjb.candyrebateweb.utils.PubUtils;
 import cn.com.mjb.candyrebateweb.utils.RedisKeyUtil;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
@@ -29,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService {
 
     @Resource
-    private UacUserMapper uacUserMapper;
+    private UacWebUserMapper uacUserMapper;
 
     @Resource
     private RedisService redisService;
@@ -60,8 +59,13 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
         uacUser.setLastOperator(userWebRegisterDto.getLoginName());
 
         // 发送激活邮件
-        String activeToken = PubUtils.uuid() + super.getUUID();
+        String activeToken = super.getUUID();
         redisService.setKey(RedisKeyUtil.getActiveUserKey(activeToken), email, 1, TimeUnit.DAYS);
+
+        int insert = uacUserMapper.insert(uacUser);
+        if (0 == insert) {
+            throw new UacWebBusinessException(ErrorCodeEnum.UAC10011012);
+        }
 
         Map<String, Object> param = Maps.newHashMap();
         param.put("loginName", userWebRegisterDto.getLoginName());

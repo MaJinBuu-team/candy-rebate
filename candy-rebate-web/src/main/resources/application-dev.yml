@@ -33,5 +33,18 @@ spring:
       time-between-eviction-runs-millis: 60000
       # 配置一个连接在池中最小生存的时间，单位是毫秒
       min-evictable-idle-time-millis: 300000
-logging:
-  config: classpath:logback-spring.xml
+  redis:
+    host: 121.89.195.134
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 500
+        min-idle: 0
+    lettuce:
+      shutdown-timeout: 0
+    password: "!QAZxsw2kwz"
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cn.com.mjb.candyrebateadmin.module.domain
