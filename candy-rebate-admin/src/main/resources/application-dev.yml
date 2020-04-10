@@ -4,7 +4,7 @@ spring:
   ## 数据库访问配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://rm-8vbyrdzy1e74921c0do.mysql.zhangbei.rds.aliyuncs.com:3306/candy_rebate?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql://rm-8vbyrdzy1e74921c0do.mysql.zhangbei.rds.aliyuncs.com:3306/candy_project_dev?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: zhu_rds
     password: '!QAZxsw2kwz'
     # 使用druid数据源

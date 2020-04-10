@@ -26,15 +26,10 @@
     </properties>
 
     <dependencies>
+        <!-- web-starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
         </dependency>
 
         <!-- 面向切面spring aop -->
@@ -42,6 +37,28 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+
+        <!-- 德鲁伊连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.10</version>
+        </dependency>
+
+        <!-- redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.2.5.RELEASE</version>
+        </dependency>
+
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
 
         <dependency>
             <groupId>com.github.flying-cattle</groupId>
@@ -72,32 +89,21 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.6.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.1.10</version>
-        </dependency>
 
         <dependency>
             <groupId>org.springframework.social</groupId>
             <artifactId>spring-social-security</artifactId>
             <version>1.1.6.RELEASE</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-redis</artifactId>
-            <version>1.8.22.RELEASE</version>
-        </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <!-- commons工具 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
 
+        <!-- xiaoleilu工具 -->
         <dependency>
             <groupId>com.xiaoleilu</groupId>
             <artifactId>hutool-all</artifactId>
@@ -109,9 +115,6 @@
             <artifactId>logstash-logback-encoder</artifactId>
             <version>4.6</version>
         </dependency>
-
-
-
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
