@@ -1,19 +1,12 @@
 package cn.com.mjb.candyrebateweb.module.enums;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
 
 /**
  * The enum Uac user status enum.
  *
  * @author buu
  */
-public enum UacUserStatusEnum {
+public enum UacWebUserStatusEnum {
 
 	/**
 	 * Enable uac user status enum.
@@ -36,7 +29,7 @@ public enum UacUserStatusEnum {
 	 */
 	String value;
 
-	UacUserStatusEnum(String key, String value) {
+	UacWebUserStatusEnum(String key, String value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -67,7 +60,7 @@ public enum UacUserStatusEnum {
 	 * @return value value
 	 */
 	public static String getValue(String key) {
-		for (UacUserStatusEnum ele : UacUserStatusEnum.values()) {
+		for (UacWebUserStatusEnum ele : UacWebUserStatusEnum.values()) {
 			if (key.equals(ele.getKey())) {
 				return ele.getValue();
 			}
@@ -82,8 +75,8 @@ public enum UacUserStatusEnum {
 	 *
 	 * @return this enum
 	 */
-	public static UacUserStatusEnum getEnum(String key) {
-		for (UacUserStatusEnum ele : UacUserStatusEnum.values()) {
+	public static UacWebUserStatusEnum getEnum(String key) {
+		for (UacWebUserStatusEnum ele : UacWebUserStatusEnum.values()) {
 			if (key.equals(ele.getKey())) {
 				return ele;
 			}

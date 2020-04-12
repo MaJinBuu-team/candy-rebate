@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 @RestController
-@RequestMapping("/api/candy/web")
-@Api(value = "Web-AuthRestController")
+@RequestMapping("/api/candy")
+@Api(value = "用户操作相关接口")
 public class UacWebController {
 
     @Resource

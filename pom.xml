@@ -45,6 +45,12 @@
             <version>2.2.5.RELEASE</version>
         </dependency>
 
+        <!-- 邮件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
         <!-- 德鲁伊连接池 -->
         <dependency>
             <groupId>com.alibaba</groupId>

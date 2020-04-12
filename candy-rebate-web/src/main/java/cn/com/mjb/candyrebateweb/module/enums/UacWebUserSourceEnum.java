@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author buu
  */
-public enum UacUserSourceEnum {
+public enum UacWebUserSourceEnum {
 
 	/**
 	 * 注册
@@ -37,7 +37,7 @@ public enum UacUserSourceEnum {
 	 */
 	String value;
 
-	UacUserSourceEnum(String key, String value) {
+	UacWebUserSourceEnum(String key, String value) {
 		this.key = key;
 		this.value = value;
 	}
@@ -68,7 +68,7 @@ public enum UacUserSourceEnum {
 	 * @return value value
 	 */
 	public static String getValue(String key) {
-		for (UacUserSourceEnum ele : UacUserSourceEnum.values()) {
+		for (UacWebUserSourceEnum ele : UacWebUserSourceEnum.values()) {
 			if (key.equals(ele.getKey())) {
 				return ele.getValue();
 			}
@@ -83,8 +83,8 @@ public enum UacUserSourceEnum {
 	 *
 	 * @return this enum
 	 */
-	public static UacUserSourceEnum getEnum(String key) {
-		for (UacUserSourceEnum ele : UacUserSourceEnum.values()) {
+	public static UacWebUserSourceEnum getEnum(String key) {
+		for (UacWebUserSourceEnum ele : UacWebUserSourceEnum.values()) {
 			if (key.equals(ele.getKey())) {
 				return ele;
 			}
@@ -97,7 +97,7 @@ public enum UacUserSourceEnum {
 	 *
 	 * @return List list
 	 */
-	public static List<UacUserSourceEnum> getList() {
-		return Arrays.asList(UacUserSourceEnum.values());
+	public static List<UacWebUserSourceEnum> getList() {
+		return Arrays.asList(UacWebUserSourceEnum.values());
 	}
 }

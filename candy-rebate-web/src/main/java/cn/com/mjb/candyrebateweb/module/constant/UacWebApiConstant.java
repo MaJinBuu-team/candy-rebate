@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
  * @author buu
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class UacApiConstant {
+public class UacWebApiConstant {
     /**
      * The constant EMAIL.
      */
