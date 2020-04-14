@@ -1,16 +1,16 @@
 
-package cn.com.mjb.candyrebateweb.module.dto;
+package cn.com.mjb.candyrebatecore.module.dto;
 
-import cn.com.mjb.candyrebateweb.utils.PubUtils;
-import cn.com.mjb.candyrebateweb.utils.PublicUtil;
+import cn.com.mjb.candyrebatecore.utils.PubUtils;
 import com.google.common.base.Preconditions;
-import com.google.common.collect.Sets;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.SimpleMailMessage;
 
 import java.util.Date;
 import java.util.Set;
+
+import static cn.com.mjb.candyrebatecore.service.impl.EmailServiceImpl.getStrings;
 
 /**
  * The class Mail entity.
@@ -101,8 +101,8 @@ public class MailEntity {
     }
 
     private static String[] setToArray(Set<String> to) {
-		return getStrings(to);
-	}
+        return getStrings(to);
+    }
 
 
 }

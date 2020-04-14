@@ -1,4 +1,4 @@
-package cn.com.mjb.candyrebateweb.module.dto;
+package cn.com.mjb.candyrebatecore.module.dto;
 
 import lombok.Data;
 

@@ -1,10 +1,10 @@
-package cn.com.mjb.candyrebateweb.service.common.impl;
+package cn.com.mjb.candyrebatecore.service.impl;
 
-import cn.com.mjb.candyrebateweb.module.constant.GlobalConstant;
-import cn.com.mjb.candyrebateweb.service.common.RedisService;
+import cn.com.mjb.candyrebatecore.module.constant.GlobalConstant;
+import cn.com.mjb.candyrebatecore.service.RedisService;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.google.common.base.Preconditions;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -21,13 +21,13 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class RedisServiceImpl implements RedisService {
     @Resource
-    private StringRedisTemplate stringRedisTemplate;
+    private StringRedisTemplate rt;
 
     @Override
     public String getKey(String key) {
         String value = null;
-        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
-        if (stringRedisTemplate.hasKey(key)) {
+        ValueOperations<String, String> ops = rt.opsForValue();
+        if (rt.hasKey(key)) {
             value = ops.get(key);
         }
         log.info("getKey. [OK] key={}, value={}", key, value);
@@ -36,7 +36,7 @@ public class RedisServiceImpl implements RedisService {
 
     @Override
     public void deleteKey(String key) {
-        stringRedisTemplate.delete(key);
+        rt.delete(key);
         log.info("deleteKey. [OK] key={}", key);
 
     }
@@ -45,9 +45,9 @@ public class RedisServiceImpl implements RedisService {
     public void setKey(String key, String value) {
         Preconditions.checkArgument(StringUtils.isNotEmpty(key), "Redis key is not null");
 
-        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+        ValueOperations<String, String> ops = rt.opsForValue();
         ops.set(key, value);
-        stringRedisTemplate.expire(key, GlobalConstant.Sys.REDIS_DEFAULT_EXPIRE, TimeUnit.MINUTES);
+        rt.expire(key, GlobalConstant.Sys.REDIS_DEFAULT_EXPIRE, TimeUnit.MINUTES);
         log.info("setKey. [OK] key={}, value={}, expire=默认超时时间", key, value);
 
 
@@ -57,9 +57,9 @@ public class RedisServiceImpl implements RedisService {
     public void setKey(String key, String value, long timeout, TimeUnit unit) {
         Preconditions.checkArgument(StringUtils.isNotEmpty(key), "Redis key is not null");
         Preconditions.checkArgument(unit != null, "TimeUnit is not null");
-        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
+        ValueOperations<String, String> ops = rt.opsForValue();
         ops.set(key, value);
-        stringRedisTemplate.expire(key, timeout, unit);
+        rt.expire(key, timeout, unit);
         log.info("setKey. [OK] key={}, value={}, timeout={}, unit={}", key, value, timeout, unit);
 
     }

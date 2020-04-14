@@ -1,4 +1,4 @@
-package cn.com.mjb.candyrebateweb.service.mail;
+package cn.com.mjb.candyrebatecore.service;
 
 import java.util.Map;
 import java.util.Set;

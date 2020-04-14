@@ -1,4 +1,4 @@
-package cn.com.mjb.candyrebateweb.module.constant;
+package cn.com.mjb.candyrebatecore.module.constant;
 
 /**
  * The class Global constant.

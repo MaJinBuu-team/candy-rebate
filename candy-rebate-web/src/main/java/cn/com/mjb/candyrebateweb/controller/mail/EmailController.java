@@ -1,13 +1,13 @@
 package cn.com.mjb.candyrebateweb.controller.mail;
 
+import cn.com.mjb.candyrebatecore.module.dto.MessageBox;
+import cn.com.mjb.candyrebatecore.utils.RedisKeyUtil;
 import cn.com.mjb.candyrebateweb.controller.BaseController;
 import cn.com.mjb.candyrebateweb.module.dto.EmailSendDto;
-import cn.com.mjb.candyrebateweb.module.dto.MessageBox;
 import cn.com.mjb.candyrebateweb.service.common.RedisService;
 import cn.com.mjb.candyrebateweb.service.mail.EmailService;
 import cn.com.mjb.candyrebateweb.utils.DateUtil;
 import cn.com.mjb.candyrebateweb.utils.RandomUtil;
-import cn.com.mjb.candyrebateweb.utils.RedisKeyUtil;
 import com.google.common.collect.Sets;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
@@ -55,8 +55,6 @@ public class EmailController extends BaseController {
         String numberCode = RandomUtil.createNumberCode(6);
         String activeToken = super.getUUID();
         redisService.setKey(RedisKeyUtil.getActiveUserKey(activeToken), numberCode, 1, TimeUnit.DAYS);
-
-
 
 
         String subject = "测试sendSimpleMail邮件";

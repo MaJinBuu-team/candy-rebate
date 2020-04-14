@@ -1,4 +1,4 @@
-package cn.com.mjb.candyrebateweb.service.common;
+package cn.com.mjb.candyrebatecore.service;
 
 import freemarker.template.TemplateException;
 

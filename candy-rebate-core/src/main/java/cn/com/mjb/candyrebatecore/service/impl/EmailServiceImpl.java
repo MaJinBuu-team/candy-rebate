@@ -1,12 +1,12 @@
-package cn.com.mjb.candyrebateweb.service.mail.impl;
+package cn.com.mjb.candyrebatecore.service.impl;
 
-import cn.com.mjb.candyrebateweb.exception.UacWebBusinessException;
-import cn.com.mjb.candyrebateweb.module.dto.MailEntity;
-import cn.com.mjb.candyrebateweb.module.enums.ErrorCodeEnum;
-import cn.com.mjb.candyrebateweb.service.common.FreeMarkerService;
-import cn.com.mjb.candyrebateweb.service.mail.EmailService;
-import cn.com.mjb.candyrebateweb.utils.PubUtils;
-import cn.com.mjb.candyrebateweb.utils.PublicUtil;
+import cn.com.mjb.candyrebatecore.exception.EmailBusinessException;
+import cn.com.mjb.candyrebatecore.module.dto.MailEntity;
+import cn.com.mjb.candyrebatecore.module.enums.ErrorCodeEnum;
+import cn.com.mjb.candyrebatecore.service.EmailService;
+import cn.com.mjb.candyrebatecore.service.FreeMarkerService;
+import cn.com.mjb.candyrebatecore.utils.PubUtils;
+import cn.com.mjb.candyrebatecore.utils.PublicUtil;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import freemarker.template.TemplateException;
@@ -64,7 +64,7 @@ public class EmailServiceImpl implements EmailService {
             text = freeMarkerService.getTemplate(model, templateLocation);
         } catch (IOException | TemplateException e) {
             log.info("sendTemplateMail [FAIL] ex={}", e.getMessage(), e);
-            throw new UacWebBusinessException(ErrorCodeEnum.OPC10040006);
+            throw new EmailBusinessException(ErrorCodeEnum.GL99990001);
         }
         return this.sendTemplateMail(subject, text, to);
     }
@@ -100,7 +100,7 @@ public class EmailServiceImpl implements EmailService {
             helper.setText(text, true);
         } catch (MessagingException e) {
             log.error("生成邮件消息体, 出现异常={}", e.getMessage(), e);
-            throw new UacWebBusinessException(ErrorCodeEnum.OPC10040005);
+            throw new EmailBusinessException(ErrorCodeEnum.OPC10040005);
         }
         return mimeMessage;
     }

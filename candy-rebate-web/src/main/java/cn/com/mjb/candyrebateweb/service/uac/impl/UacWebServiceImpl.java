@@ -1,5 +1,7 @@
 package cn.com.mjb.candyrebateweb.service.uac.impl;
 
+import cn.com.mjb.candyrebatecore.utils.Md5Util;
+import cn.com.mjb.candyrebatecore.utils.RedisKeyUtil;
 import cn.com.mjb.candyrebateweb.dao.UacWebUserMapper;
 import cn.com.mjb.candyrebateweb.exception.UacWebBusinessException;
 import cn.com.mjb.candyrebateweb.module.domain.UacWebUser;
@@ -10,8 +12,6 @@ import cn.com.mjb.candyrebateweb.module.enums.UacWebUserSourceEnum;
 import cn.com.mjb.candyrebateweb.module.enums.UacWebUserStatusEnum;
 import cn.com.mjb.candyrebateweb.service.common.RedisService;
 import cn.com.mjb.candyrebateweb.service.uac.UacWebService;
-import cn.com.mjb.candyrebateweb.utils.Md5Util;
-import cn.com.mjb.candyrebateweb.utils.RedisKeyUtil;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
-package cn.com.mjb.candyrebateweb.service.common.impl;
+package cn.com.mjb.candyrebatecore.service.impl;
 
-import cn.com.mjb.candyrebateweb.service.common.FreeMarkerService;
+import cn.com.mjb.candyrebatecore.service.FreeMarkerService;
 import com.google.common.base.Preconditions;
 import freemarker.template.Configuration;
 import freemarker.template.Template;

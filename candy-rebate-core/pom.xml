@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.com.mjb</groupId>
+        <artifactId>candy-rebate</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <name>candy-rebate-core</name>
+    <artifactId>candy-rebate-core</artifactId>
+    <version>1.0.0</version>
+    <description>糖果返利核心组件</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+</project>

@@ -19,6 +19,7 @@
     <modules>
         <module>candy-rebate-admin</module>
         <module>candy-rebate-web</module>
+        <module>candy-rebate-core</module>
     </modules>
 
     <properties>

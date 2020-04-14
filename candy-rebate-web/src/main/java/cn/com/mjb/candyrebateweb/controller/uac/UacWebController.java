@@ -1,6 +1,6 @@
 package cn.com.mjb.candyrebateweb.controller.uac;
 
-import cn.com.mjb.candyrebateweb.module.dto.MessageBox;
+import cn.com.mjb.candyrebatecore.module.dto.MessageBox;
 import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
 import cn.com.mjb.candyrebateweb.service.uac.UacWebService;
 import io.swagger.annotations.Api;

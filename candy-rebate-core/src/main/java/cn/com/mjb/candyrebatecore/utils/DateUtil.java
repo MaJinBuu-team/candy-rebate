@@ -1,4 +1,4 @@
-package cn.com.mjb.candyrebateweb.utils;
+package cn.com.mjb.candyrebatecore.utils;
 
 
 import com.xiaoleilu.hutool.date.DateField;
