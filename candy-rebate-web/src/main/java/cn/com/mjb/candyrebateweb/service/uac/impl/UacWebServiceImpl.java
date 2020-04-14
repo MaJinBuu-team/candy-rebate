@@ -1,5 +1,6 @@
 package cn.com.mjb.candyrebateweb.service.uac.impl;
 
+import cn.com.mjb.candyrebatecore.service.RedisService;
 import cn.com.mjb.candyrebatecore.utils.Md5Util;
 import cn.com.mjb.candyrebatecore.utils.RedisKeyUtil;
 import cn.com.mjb.candyrebateweb.dao.UacWebUserMapper;
@@ -10,7 +11,6 @@ import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
 import cn.com.mjb.candyrebateweb.module.enums.ErrorCodeEnum;
 import cn.com.mjb.candyrebateweb.module.enums.UacWebUserSourceEnum;
 import cn.com.mjb.candyrebateweb.module.enums.UacWebUserStatusEnum;
-import cn.com.mjb.candyrebateweb.service.common.RedisService;
 import cn.com.mjb.candyrebateweb.service.uac.UacWebService;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;

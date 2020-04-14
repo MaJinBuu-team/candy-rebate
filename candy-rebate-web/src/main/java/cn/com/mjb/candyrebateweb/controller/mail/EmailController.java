@@ -1,13 +1,13 @@
 package cn.com.mjb.candyrebateweb.controller.mail;
 
 import cn.com.mjb.candyrebatecore.module.dto.MessageBox;
+import cn.com.mjb.candyrebatecore.service.EmailService;
+import cn.com.mjb.candyrebatecore.service.RedisService;
+import cn.com.mjb.candyrebatecore.utils.DateUtil;
+import cn.com.mjb.candyrebatecore.utils.RandomUtil;
 import cn.com.mjb.candyrebatecore.utils.RedisKeyUtil;
 import cn.com.mjb.candyrebateweb.controller.BaseController;
 import cn.com.mjb.candyrebateweb.module.dto.EmailSendDto;
-import cn.com.mjb.candyrebateweb.service.common.RedisService;
-import cn.com.mjb.candyrebateweb.service.mail.EmailService;
-import cn.com.mjb.candyrebateweb.utils.DateUtil;
-import cn.com.mjb.candyrebateweb.utils.RandomUtil;
 import com.google.common.collect.Sets;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Value;
