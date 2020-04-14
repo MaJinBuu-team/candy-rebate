@@ -28,7 +28,7 @@ import java.util.Map;
 public class LogAspect {
 
     // 定义切点Pointcut
-    @Pointcut("execution(* cn.com.mjb.candyrebateadmin.controller..*.*(..))")
+    @Pointcut("execution(* cn.com.mjb.candyrebateweb.controller..*.*(..))")
     public void executeService() {
     }
 

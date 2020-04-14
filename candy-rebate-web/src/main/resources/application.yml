@@ -1,6 +1,8 @@
 server:
   port: 8083
 spring:
+  application:
+    name: 'candy-rebate-web'
   ## 数据库访问配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -47,6 +49,8 @@ spring:
     password: "!QAZxsw2kwz"
   mail:
     username: "FatMaJin_Buu@126.com"
+  profiles:
+    active: 'dev'
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: cn.com.mjb.candyrebateadmin.module.domain

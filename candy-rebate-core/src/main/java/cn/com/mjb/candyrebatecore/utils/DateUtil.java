@@ -1,7 +1,6 @@
 package cn.com.mjb.candyrebatecore.utils;
 
 
-import com.xiaoleilu.hutool.date.DateField;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -18,11 +17,27 @@ public class DateUtil {
     /**
      * 获取系统前时间.
      *
-     * @param minute the minute
-     * @return the before time[yyyy-MM-dd HH:mm:ss]
+     * @return 转换成yyyy-MM-dd HH:mm:ss
      */
-    public static String getBeforeTime(int minute) {
-        Date newDate = com.xiaoleilu.hutool.date.DateUtil.offset(new Date(), DateField.MINUTE, -minute);
-        return com.xiaoleilu.hutool.date.DateUtil.formatDateTime(newDate);
+    public static String getStringDate() {
+        return com.xiaoleilu.hutool.date.DateUtil.format(new Date(), "yyyy-MM-dd HH:mm:ss");
+    }
+
+    /**
+     * 获取指定时间的转换
+     *
+     * @return 转换成yyyy-MM-dd HH:mm:ss
+     */
+    public static String getStringToDate(Date date, String format) {
+        return com.xiaoleilu.hutool.date.DateUtil.format(date, format);
+    }
+
+    /**
+     * 获取指定时间的转换
+     *
+     * @return 转换成yyyy-MM-dd HH:mm:ss
+     */
+    public static String getStringToDate(long timestamp, String format) {
+        return com.xiaoleilu.hutool.date.DateUtil.format(new Date(timestamp), format);
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.mjb.candyrebateweb.dao.CrExceptionLogDao">
+
+	<resultMap id="BaseResultMap" type="cn.com.mjb.candyrebateweb.module.domain.CrExceptionLog">
+		<id column="id" property="id" />
+		<id column="application_name" property="applicationName" />
+		<id column="exception_simple_name" property="exceptionSimpleName" />
+		<id column="exception_message" property="exceptionMessage" />
+		<id column="exception_cause" property="exceptionCause" />
+		<id column="exception_stack" property="exceptionStack" />
+		<id column="creator" property="creator" />
+		<id column="creator_id" property="creatorId" />
+		<id column="create_time" property="createTime" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, application_name, exception_simple_name, exception_message, exception_cause, exception_stack, creator, creator_id, create_time
+	</sql>
+	
+</mapper>

@@ -1,7 +1,7 @@
 package cn.com.mjb.candyrebateweb.exception;
 
 
-import cn.com.mjb.candyrebateweb.module.enums.ErrorCodeEnum;
+import cn.com.mjb.candyrebatecore.module.enums.ErrorCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

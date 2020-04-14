@@ -1,7 +1,7 @@
 package cn.com.mjb.candyrebateweb.service.uac;
 
 
-import cn.com.mjb.candyrebateweb.module.domain.UacWebUser;
+import cn.com.mjb.candyrebateweb.module.domain.CrUacUser;
 import cn.com.mjb.candyrebateweb.module.dto.UacWebLoginDto;
 import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
 
@@ -14,6 +14,6 @@ public interface UacWebService extends BaseService{
      */
     void register(UserWebRegisterDto userWebRegisterDto);
 
-    UacWebUser login(UacWebLoginDto uacLoginVo);
+    CrUacUser login(UacWebLoginDto uacLoginVo);
 
 }

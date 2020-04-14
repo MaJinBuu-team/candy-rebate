@@ -5,7 +5,7 @@ import cn.com.mjb.candyrebatecore.module.enums.ErrorCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class EmailBusinessException extends RuntimeException {
+public class CoreBusinessException extends RuntimeException {
     private static final long serialVersionUID = -3205518496516817885L;
 
     /**
@@ -13,16 +13,16 @@ public class EmailBusinessException extends RuntimeException {
      */
     private int code;
 
-    public EmailBusinessException(String message) {
+    public CoreBusinessException(String message) {
         super(message);
     }
 
-    public EmailBusinessException(int code, String message) {
+    public CoreBusinessException(int code, String message) {
         super(message);
         this.code = code;
     }
 
-    public EmailBusinessException(ErrorCodeEnum errorCodeEnum) {
+    public CoreBusinessException(ErrorCodeEnum errorCodeEnum) {
         super(errorCodeEnum.msg());
         this.code = errorCodeEnum.code();
     }

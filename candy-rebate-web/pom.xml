@@ -10,8 +10,8 @@
 
     <name>candy-rebate-web</name>
     <artifactId>candy-rebate-web</artifactId>
-    <version>1.0.0</version>
     <description>糖果返利前端端</description>
+
 
     <properties>
         <java.version>1.8</java.version>

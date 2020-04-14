@@ -1,14 +1,14 @@
 package cn.com.mjb.candyrebateweb.service.uac.impl;
 
+import cn.com.mjb.candyrebatecore.module.enums.ErrorCodeEnum;
 import cn.com.mjb.candyrebatecore.service.RedisService;
 import cn.com.mjb.candyrebatecore.utils.Md5Util;
 import cn.com.mjb.candyrebatecore.utils.RedisKeyUtil;
-import cn.com.mjb.candyrebateweb.dao.UacWebUserMapper;
+import cn.com.mjb.candyrebateweb.dao.CrUacUserDao;
 import cn.com.mjb.candyrebateweb.exception.UacWebBusinessException;
-import cn.com.mjb.candyrebateweb.module.domain.UacWebUser;
+import cn.com.mjb.candyrebateweb.module.domain.CrUacUser;
 import cn.com.mjb.candyrebateweb.module.dto.UacWebLoginDto;
 import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
-import cn.com.mjb.candyrebateweb.module.enums.ErrorCodeEnum;
 import cn.com.mjb.candyrebateweb.module.enums.UacWebUserSourceEnum;
 import cn.com.mjb.candyrebateweb.module.enums.UacWebUserStatusEnum;
 import cn.com.mjb.candyrebateweb.service.uac.UacWebService;
@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService {
 
     @Resource
-    private UacWebUserMapper uacUserMapper;
+    private CrUacUserDao crUacUserDao;
 
     @Resource
     private RedisService redisService;
@@ -44,25 +44,25 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
         String salt = String.valueOf(getUUID());
 
         // 封装注册信息
-        UacWebUser uacUser = new UacWebUser();
-        uacUser.setLoginName(userWebRegisterDto.getLoginName());
-        uacUser.setSalt(salt);
-        uacUser.setLoginPwd(Md5Util.encrypt(userWebRegisterDto.getLoginPwd()));
-        uacUser.setMobileNo(mobileNo);
-        uacUser.setStatus(UacWebUserStatusEnum.DISABLE.getKey());
-        uacUser.setUserSource(UacWebUserSourceEnum.REGISTER.getKey());
-        uacUser.setCreatedTime(row);
-        uacUser.setUpdateTime(row);
-        uacUser.setEmail(email);
-        uacUser.setCreator(userWebRegisterDto.getLoginName());
-        uacUser.setUserName(userWebRegisterDto.getLoginName());
-        uacUser.setLastOperator(userWebRegisterDto.getLoginName());
+        CrUacUser crUacUser = new CrUacUser();
+        crUacUser.setLoginName(userWebRegisterDto.getLoginName());
+        crUacUser.setSalt(salt);
+        crUacUser.setLoginPwd(Md5Util.encrypt(userWebRegisterDto.getLoginPwd()));
+        crUacUser.setMobileNo(mobileNo);
+        crUacUser.setStatus(UacWebUserStatusEnum.DISABLE.getKey());
+        crUacUser.setUserSource(UacWebUserSourceEnum.REGISTER.getKey());
+        crUacUser.setCreatedTime(row);
+        crUacUser.setUpdateTime(row);
+        crUacUser.setEmail(email);
+        crUacUser.setCreator(userWebRegisterDto.getLoginName());
+        crUacUser.setUserName(userWebRegisterDto.getLoginName());
+        crUacUser.setLastOperator(userWebRegisterDto.getLoginName());
 
         // 发送激活邮件
         String activeToken = super.getUUID();
         redisService.setKey(RedisKeyUtil.getActiveUserKey(activeToken), email, 1, TimeUnit.DAYS);
 
-        int insert = uacUserMapper.insert(uacUser);
+        int insert = crUacUserDao.insert(crUacUser);
         if (0 == insert) {
             throw new UacWebBusinessException(ErrorCodeEnum.UAC10011012);
         }
@@ -73,11 +73,11 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
     }
 
     @Override
-    public UacWebUser login(UacWebLoginDto uacWebLoginDto) {
+    public CrUacUser login(UacWebLoginDto uacWebLoginDto) {
 
         // 判断用户是以为什么方式登录进来的
         Preconditions.checkArgument(!StringUtils.isEmpty(uacWebLoginDto.getLoginPwd()), "密码不能为空");
-        UacWebUser uacWebUser = uacUserMapper.selectById(uacWebLoginDto.getEmail());
+        CrUacUser crUacUser = crUacUserDao.selectById(uacWebLoginDto.getEmail());
         return null;
     }
 
@@ -94,26 +94,26 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getRegisterSource()), "验证类型错误");
         Preconditions.checkArgument(userWebRegisterDto.getLoginPwd().equals(userWebRegisterDto.getConfirmPwd()), "两次密码不一致");
 
-        UacWebUser uacWebUser = new UacWebUser();
-        uacWebUser.setLoginName(userWebRegisterDto.getLoginName());
+        CrUacUser crUacUser = new CrUacUser();
+        crUacUser.setLoginName(userWebRegisterDto.getLoginName());
 
         // 通过loginName看看数据库中有没有已经注册
-        int count = uacUserMapper.findByLoginName(uacWebUser);
+        int count = crUacUserDao.findByLoginName(crUacUser);
         if (count > 0) {
             throw new UacWebBusinessException(ErrorCodeEnum.UAC10011012);
         }
 
-        uacWebUser = new UacWebUser();
-        uacWebUser.setMobileNo(userWebRegisterDto.getMobileNo());
+        crUacUser = new CrUacUser();
+        crUacUser.setMobileNo(userWebRegisterDto.getMobileNo());
         // 通过loginName看看数据库中有没有已经注册
-        count = uacUserMapper.findByMobile(uacWebUser);
+        count = crUacUserDao.findByMobile(crUacUser);
         if (count > 0) {
             throw new UacWebBusinessException(ErrorCodeEnum.UAC10011013);
         }
 
-        uacWebUser = new UacWebUser();
-        uacWebUser.setEmail(userWebRegisterDto.getEmail());
-        count = uacUserMapper.findByEmail(uacWebUser);
+        crUacUser = new CrUacUser();
+        crUacUser.setEmail(userWebRegisterDto.getEmail());
+        count = crUacUserDao.findByEmail(crUacUser);
         if (count > 0) {
             throw new UacWebBusinessException(ErrorCodeEnum.UAC10011019);
         }

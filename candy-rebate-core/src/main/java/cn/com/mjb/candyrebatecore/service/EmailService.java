@@ -1,12 +1,11 @@
 package cn.com.mjb.candyrebatecore.service;
 
-import java.util.Map;
 import java.util.Set;
 
 public interface EmailService {
 
     /**
-     * Send simple mail int.
+     * 发送简单邮件，没有模板
      *
      * @param subject the subject
      * @param text    the text
@@ -16,24 +15,11 @@ public interface EmailService {
     int sendSimpleMail(String subject, String text, Set<String> to);
 
     /**
-     * Send template mail int.
+     * 发送邮箱验证码（6位随机数字）
      *
-     * @param subject the subject
-     * @param text    the text
-     * @param to      the to
-     * @return the int
+     * @param email 邮箱
+     * @return int
      */
-    int sendTemplateMail(String subject, String text, Set<String> to);
-
-    /**
-     * Send template mail int.
-     *
-     * @param model            the model
-     * @param templateLocation the template location
-     * @param subject          the subject
-     * @param to               the to
-     * @return the int
-     */
-    int sendTemplateMail(Map<String, Object> model, String templateLocation, String subject, Set<String> to);
+    int sendTemplateMail(String email);
 
 }

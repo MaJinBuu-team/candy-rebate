@@ -1,5 +1,6 @@
 package cn.com.mjb.candyrebatecore.module.dto;
 
+import cn.com.mjb.candyrebatecore.module.enums.ErrorCodeEnum;
 import lombok.Data;
 
 /**
@@ -31,6 +32,14 @@ public class MessageBox {
 
     public static MessageBox failed() {
         return createBaseResult(RESULT_FAILED, null, FAILED);
+    }
+
+    public static MessageBox failed(int code, String msg) {
+        return createBaseResult(code, null, msg);
+    }
+
+    public static MessageBox failed(ErrorCodeEnum errorCodeEnum) {
+        return createBaseResult(errorCodeEnum.code(), null, errorCodeEnum.msg());
     }
 
     public static MessageBox ok(int code, String msg) {
