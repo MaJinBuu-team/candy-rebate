@@ -1,4 +1,5 @@
 server:
+  # 配置端口
   port: 8083
 spring:
   application:
@@ -51,8 +52,34 @@ spring:
     username: "FatMaJin_Buu@126.com"
   profiles:
     active: 'dev'
+  # freemarker模板引擎
+  freemarker:
+    allow-request-override: true
+    allow-session-override: true
+    cache: false
+    check-template-location: true
+    charset: UTF-8
+    content-type: text/html;
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+    template-loader-path: classpath:/email/,classpath:/templates/,classpath:/public/
+    prefix:
+    suffix: .ftl
+    request-context-attribute: request
+    settings:
+      template_update_delay: 0
+      url_escaping_charset: UTF-8
+      locale: UTF-8
+      datetime_format: yyyy-MM-dd HH:mm:ss
+      date_format: yyyy-MM-dd
+      time_format: HH:mm:ss
+      template_exception_handler: html_debug
+      # 数字格式化，无小数点
+      number_format: '0.#'
+      # 设置freemarker标签 0,1,2 0=自动识别，默认1
+      tag_syntax: 'auto_detect'
+
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: cn.com.mjb.candyrebateadmin.module.domain
-
-registerMailTemplate: "mail/userRegisterTemplate.ftl"

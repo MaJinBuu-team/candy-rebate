@@ -1,0 +1,14 @@
+spring:
+  #邮箱配置
+  mail:
+    host: smtp.qq.com
+    username: FatMaJin_Buu@126.com
+    password: zhu19940121
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true

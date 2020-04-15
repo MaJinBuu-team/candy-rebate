@@ -13,7 +13,6 @@ import cn.com.mjb.candyrebatecore.utils.RandomUtil;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -35,7 +34,7 @@ public class EmailServiceImpl implements EmailService {
     @Resource
     private TaskExecutor taskExecutor;
 
-    @Autowired(required = false)
+    @Resource
     private JavaMailSender javaMailSender;
 
     @Resource
@@ -78,7 +77,8 @@ public class EmailServiceImpl implements EmailService {
 
             String text = freeMarkerService.getTemplate(mailContent, UacEmailTemplateEnum.REGISTER_USER.getLocation());
             MimeMessage mimeMessage = getMimeMessage(UacEmailTemplateEnum.REGISTER_USER.getSubject(), text, to);
-            taskExecutor.execute(() -> javaMailSender.send(mimeMessage));
+//            taskExecutor.execute(() -> );
+            javaMailSender.send(mimeMessage);
         } catch (Exception e) {
             log.info("sendTemplateMail [FAIL] ex={}", e.getMessage(), e);
             throw new CoreBusinessException(ErrorCodeEnum.OPC10040006);

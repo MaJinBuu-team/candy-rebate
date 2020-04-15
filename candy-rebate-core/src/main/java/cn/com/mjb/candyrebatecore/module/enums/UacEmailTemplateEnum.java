@@ -18,7 +18,7 @@ public enum UacEmailTemplateEnum {
     /**
      * 注册用户-获取邮箱验证码
      */
-	REGISTER_USER("REGISTER_USER", "注册用户-获取邮箱验证码", "email/userRegisterTemplate.ftl"),
+	REGISTER_USER("REGISTER_USER", "注册用户-获取邮箱验证码", "/userRegisterTemplate.ftl"),
     /**
      * 忘记密码-重置密码
      */
