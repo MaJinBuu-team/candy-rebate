@@ -77,7 +77,6 @@ public class EmailServiceImpl implements EmailService {
 
             String text = freeMarkerService.getTemplate(mailContent, UacEmailTemplateEnum.REGISTER_USER.getLocation());
             MimeMessage mimeMessage = getMimeMessage(UacEmailTemplateEnum.REGISTER_USER.getSubject(), text, to);
-//            taskExecutor.execute(() -> );
             javaMailSender.send(mimeMessage);
         } catch (Exception e) {
             log.info("sendTemplateMail [FAIL] ex={}", e.getMessage(), e);
