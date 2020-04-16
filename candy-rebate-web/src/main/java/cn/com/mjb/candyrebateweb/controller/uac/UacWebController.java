@@ -1,6 +1,8 @@
 package cn.com.mjb.candyrebateweb.controller.uac;
 
 import cn.com.mjb.candyrebatecore.module.dto.MessageBox;
+import cn.com.mjb.candyrebatecore.module.enums.UacEmailTemplateEnum;
+import cn.com.mjb.candyrebateweb.module.dto.EmailSendDto;
 import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
 import cn.com.mjb.candyrebateweb.service.uac.UacWebService;
 import io.swagger.annotations.Api;
@@ -14,11 +16,24 @@ import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/api/candy")
-@Api(value = "用户操作相关接口")
+@Api(tags = "用户操作相关接口")
 public class UacWebController {
 
     @Resource
     private UacWebService uacWebService;
+
+    @PostMapping("/sendRegisterEmailCode")
+    @ApiOperation(httpMethod = "POST", value = "发送注册验证码邮件")
+    public MessageBox sendRegisterEmailCode(@RequestBody EmailSendDto emailSendDto) {
+
+        return MessageBox.ok();
+    }
+
+    @PostMapping("/sendRestEmailCode")
+    @ApiOperation(httpMethod = "POST", value = "发送重置密码邮件")
+    public MessageBox sendRestEmailCode(@RequestBody EmailSendDto emailSendDto) {
+        return MessageBox.ok();
+    }
 
     /**
      * 用户注册

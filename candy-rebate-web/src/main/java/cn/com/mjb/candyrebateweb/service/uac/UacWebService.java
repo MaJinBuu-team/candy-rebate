@@ -2,10 +2,18 @@ package cn.com.mjb.candyrebateweb.service.uac;
 
 
 import cn.com.mjb.candyrebateweb.module.domain.CrUacUser;
+import cn.com.mjb.candyrebateweb.module.dto.EmailSendDto;
 import cn.com.mjb.candyrebateweb.module.dto.UacWebLoginDto;
 import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
 
-public interface UacWebService extends BaseService{
+public interface UacWebService extends BaseService {
+
+    /**
+     * 发送注册验证码.
+     *
+     * @param emailSendDto dto
+     */
+    void sendRegisterEmailCode(EmailSendDto emailSendDto);
 
     /**
      * 注册用户.

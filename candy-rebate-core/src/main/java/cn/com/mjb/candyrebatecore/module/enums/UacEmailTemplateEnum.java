@@ -10,23 +10,19 @@ public enum UacEmailTemplateEnum {
     /**
      * 重置密码-获取验证码
      */
-    RESET_PWD_GET_CODE("RESET_PWD_CODE", "重置密码-获取验证码", "email/sendRestPwdCodeTemplate.ftl"),
+    RESET_PWD_CODE("RESET_PWD_CODE", "重置密码-获取验证码", "/sendRestUserEmailTemplate.ftl"),
     /**
-     * 忘记密码-等待重置密码.
+     * 重置密码-重置密码成功
      */
-    RESET_PWD_SEND_MAIL("RESET_PWD_CODE", "忘记密码-等待重置密码", "email/sendRestLoginPwdTemplate.ftl"),
+    RESET_PWD_SUCCESSFUL("RESET_PWD_SUCCESSFUL", "修改邮箱-邮件验证码", "/sendRestUserEmailTemplate.ftl"),
     /**
      * 注册用户-获取邮箱验证码
      */
-	REGISTER_USER("REGISTER_USER", "注册用户-获取邮箱验证码", "/userRegisterTemplate.ftl"),
+    REGISTER_USER_CODE("REGISTER_USER_CODE", "注册用户-获取邮箱验证码", "/userRegisterTemplate.ftl"),
     /**
-     * 忘记密码-重置密码
+     * 注册成功-发送注册成功邮件
      */
-    RESET_LOGIN_PWD("RESET_LOGIN_PWD", "忘记密码-重置密码", "email/sendRestLoginPwdSuccessTemplate.ftl"),
-    /**
-     * 忘记密码-邮件验证码
-     */
-    RESET_USER_EMAIL("RESET_USER_EMAIL", "修改邮箱-邮件验证码", "email/sendRestUserEmailTemplate.ftl"),
+    REGISTER_USER_SUCCESSFUL("REGISTER_USER_SUCCESSFUL", "注册成功-发送注册成功邮件", "/userRegisterSuccessful.ftl"),
     ;
 
     /**

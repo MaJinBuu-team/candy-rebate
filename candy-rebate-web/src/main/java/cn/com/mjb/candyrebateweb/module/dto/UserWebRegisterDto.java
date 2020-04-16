@@ -7,7 +7,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 /**
- * The class User register dto.
+ * 用户注册
  *
  * @author buu
  */
@@ -46,8 +46,20 @@ public class UserWebRegisterDto implements Serializable {
     private String email;
 
     /**
-     * 注册token
+     * 验证码类型
+     */
+    @ApiModelProperty(value = "验证码类型")
+    private String registerCodeType;
+
+    /**
+     * 注册验证码
+     */
+    @ApiModelProperty(value = "验证码")
+    private String registerCode;
+
+    /**
+     * 注册渠道
      */
     @ApiModelProperty(value = "注册渠道")
-    private String registerSource;
+    private String registerResource;
 }

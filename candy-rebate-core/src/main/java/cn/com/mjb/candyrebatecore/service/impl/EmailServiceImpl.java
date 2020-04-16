@@ -62,27 +62,47 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public int sendTemplateMail(String email) {
-        log.info("sendTemplateMail - 发送模板邮件. email={}", email);
-        int result = 1;
+    public void sendTemplateMail(String code, String email, UacEmailTemplateEnum uacEmailTemplateEnum) {
+        log.info("sendTemplateMail - 发送模板邮件. email={} 邮件类型. type{}", email, uacEmailTemplateEnum.getKey());
         try {
             // 设置邮箱的基本格式(配合邮件模板试用的)
             Map<String, Object> mailContent = new HashMap<>(3);
             mailContent.put("loginName", email);
-            mailContent.put("registerCode", RandomUtil.createNumberCode(6));
+            mailContent.put("registerCode", code);
             mailContent.put("dateTime", DateUtil.getStringDate());
 
             Set<String> to = new HashSet<>();
             to.add(email);
 
-            String text = freeMarkerService.getTemplate(mailContent, UacEmailTemplateEnum.REGISTER_USER.getLocation());
-            MimeMessage mimeMessage = getMimeMessage(UacEmailTemplateEnum.REGISTER_USER.getSubject(), text, to);
-            javaMailSender.send(mimeMessage);
+            String text;
+            MimeMessage mimeMessage;
+            switch (uacEmailTemplateEnum.getKey()) {
+                case "RESET_PWD_CODE":
+                    text = freeMarkerService.getTemplate(mailContent, UacEmailTemplateEnum.RESET_PWD_CODE.getLocation());
+                    mimeMessage = getMimeMessage(UacEmailTemplateEnum.RESET_PWD_CODE.getSubject(), text, to);
+                    javaMailSender.send(mimeMessage);
+                    break;
+                case "RESET_PWD_SUCCESSFUL":
+                    text = freeMarkerService.getTemplate(mailContent, UacEmailTemplateEnum.RESET_PWD_SUCCESSFUL.getLocation());
+                    mimeMessage = getMimeMessage(UacEmailTemplateEnum.RESET_PWD_SUCCESSFUL.getSubject(), text, to);
+                    javaMailSender.send(mimeMessage);
+                    break;
+                case "REGISTER_USER_CODE":
+                    text = freeMarkerService.getTemplate(mailContent, UacEmailTemplateEnum.REGISTER_USER_CODE.getLocation());
+                    mimeMessage = getMimeMessage(UacEmailTemplateEnum.REGISTER_USER_CODE.getSubject(), text, to);
+                    javaMailSender.send(mimeMessage);
+                    break;
+                case "REGISTER_USER_SUCCESSFUL":
+                    text = freeMarkerService.getTemplate(mailContent, UacEmailTemplateEnum.REGISTER_USER_SUCCESSFUL.getLocation());
+                    mimeMessage = getMimeMessage(UacEmailTemplateEnum.REGISTER_USER_SUCCESSFUL.getSubject(), text, to);
+                    javaMailSender.send(mimeMessage);
+                    break;
+            }
+
         } catch (Exception e) {
             log.info("sendTemplateMail [FAIL] ex={}", e.getMessage(), e);
             throw new CoreBusinessException(ErrorCodeEnum.OPC10040006);
         }
-        return result;
     }
 
     private MimeMessage getMimeMessage(String subject, String text, Set<String> to) {

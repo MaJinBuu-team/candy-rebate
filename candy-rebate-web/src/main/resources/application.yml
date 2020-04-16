@@ -2,8 +2,10 @@ server:
   # 配置端口
   port: 8083
 spring:
+  profiles:
+    active: dev
   application:
-    name: 'candy-rebate-web'
+    name: candy-rebate-web
   ## 数据库访问配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -36,6 +38,8 @@ spring:
       time-between-eviction-runs-millis: 60000
       # 配置一个连接在池中最小生存的时间，单位是毫秒
       min-evictable-idle-time-millis: 300000
+
+  # redis配置
   redis:
     host: 121.89.195.134
     port: 6379
@@ -48,8 +52,6 @@ spring:
     lettuce:
       shutdown-timeout: 0
     password: "!QAZxsw2kwz"
-
-
 
   #邮箱配置
   mail:
@@ -70,8 +72,7 @@ spring:
             fallbock: false
     port: 465
 
-  profiles:
-    active: 'dev'
+
   # freemarker模板引擎
   freemarker:
     allow-request-override: true
@@ -100,6 +101,9 @@ spring:
       # 设置freemarker标签 0,1,2 0=自动识别，默认1
       tag_syntax: 'auto_detect'
 
+# mp配置
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: cn.com.mjb.candyrebateadmin.module.domain
+logging:
+  config: classpath:logback-spring.xml

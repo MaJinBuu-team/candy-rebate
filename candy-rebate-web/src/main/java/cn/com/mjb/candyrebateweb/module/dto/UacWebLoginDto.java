@@ -1,11 +1,13 @@
 package cn.com.mjb.candyrebateweb.module.dto;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
+@ApiModel(value = "用户登录Dto")
 public class UacWebLoginDto implements Serializable {
 
     private static final long serialVersionUID = 2914741209067451857L;

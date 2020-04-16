@@ -1,12 +1,15 @@
 package cn.com.mjb.candyrebateweb.service.uac.impl;
 
 import cn.com.mjb.candyrebatecore.module.enums.ErrorCodeEnum;
+import cn.com.mjb.candyrebatecore.module.enums.UacEmailTemplateEnum;
+import cn.com.mjb.candyrebatecore.service.EmailService;
 import cn.com.mjb.candyrebatecore.service.RedisService;
 import cn.com.mjb.candyrebatecore.utils.Md5Util;
-import cn.com.mjb.candyrebatecore.utils.RedisKeyUtil;
+import cn.com.mjb.candyrebatecore.utils.RandomUtil;
 import cn.com.mjb.candyrebateweb.dao.CrUacUserDao;
 import cn.com.mjb.candyrebateweb.exception.UacWebBusinessException;
 import cn.com.mjb.candyrebateweb.module.domain.CrUacUser;
+import cn.com.mjb.candyrebateweb.module.dto.EmailSendDto;
 import cn.com.mjb.candyrebateweb.module.dto.UacWebLoginDto;
 import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
 import cn.com.mjb.candyrebateweb.module.enums.UacWebUserSourceEnum;
@@ -33,6 +36,20 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
     @Resource
     private RedisService redisService;
 
+    @Resource
+    private EmailService emailService;
+
+    @Override
+    public void sendRegisterEmailCode(EmailSendDto emailSendDto) {
+        // 先生成一个随机数
+        String numberCode = RandomUtil.createNumberCode(6);
+        // 发送
+        emailService.sendTemplateMail(numberCode, emailSendDto.getEmail(), UacEmailTemplateEnum.REGISTER_USER_CODE);
+        // 将随机数进行存储
+        redisService.setKey(emailSendDto.getEmail(), numberCode, 10, TimeUnit.MINUTES);
+
+    }
+
     @Override
     public void register(UserWebRegisterDto userWebRegisterDto) {
         // 校验注册信息
@@ -57,10 +74,6 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
         crUacUser.setCreator(userWebRegisterDto.getLoginName());
         crUacUser.setUserName(userWebRegisterDto.getLoginName());
         crUacUser.setLastOperator(userWebRegisterDto.getLoginName());
-
-        // 发送激活邮件
-        String activeToken = super.getUUID();
-        redisService.setKey(RedisKeyUtil.getActiveUserKey(activeToken), email, 1, TimeUnit.DAYS);
 
         int insert = crUacUserDao.insert(crUacUser);
         if (0 == insert) {
@@ -88,7 +101,6 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
         // 一系列的非空校验
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getLoginName()), ErrorCodeEnum.UAC10011007.msg());
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getEmail()), ErrorCodeEnum.UAC10011018.msg());
-        Preconditions.checkArgument(!StringUtils.isEmpty(mobileNo), "手机号不能为空");
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getLoginPwd()), ErrorCodeEnum.UAC10011014.msg());
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getConfirmPwd()), ErrorCodeEnum.UAC10011009.msg());
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getRegisterSource()), "验证类型错误");
