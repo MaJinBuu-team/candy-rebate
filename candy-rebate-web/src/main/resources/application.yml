@@ -105,5 +105,6 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: cn.com.mjb.candyrebateadmin.module.domain
+
 logging:
   config: classpath:logback-spring.xml

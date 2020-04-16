@@ -103,7 +103,8 @@ public class UacWebServiceImpl extends BaseServiceImpl implements UacWebService 
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getEmail()), ErrorCodeEnum.UAC10011018.msg());
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getLoginPwd()), ErrorCodeEnum.UAC10011014.msg());
         Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getConfirmPwd()), ErrorCodeEnum.UAC10011009.msg());
-        Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getRegisterSource()), "验证类型错误");
+        Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getRegisterCodeType()), "验证类型错误");
+        Preconditions.checkArgument(!StringUtils.isEmpty(userWebRegisterDto.getRegisterResource()), "注册来源错误");
         Preconditions.checkArgument(userWebRegisterDto.getLoginPwd().equals(userWebRegisterDto.getConfirmPwd()), "两次密码不一致");
 
         CrUacUser crUacUser = new CrUacUser();
