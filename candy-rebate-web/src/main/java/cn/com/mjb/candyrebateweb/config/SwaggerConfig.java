@@ -21,13 +21,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class SwaggerConfig {
 
     @Value("${server.port}")
-    private static String port;
+    private String port;
 
     public static String CONTROLLER_URL = "cn.com.mjb.candyrebateweb.controller";    //Swagger扫描的接口路径
     public static String SWAGGER_TITLE = "API文档-buu";                //Swagger接口文档标题
-    public static String SWAGGER_DESCRIPTION = "返利前端接口文档";                //Swagger接口文档描述
+    public static String SWAGGER_DESCRIPTION = "糖果返利文档";                //Swagger接口文档描述
     public static String SWAGGER_VERSION = "1.0.0";                         //Swagger接口文档版本
-    public final static String SWAGGER_URL = "http:121.89.195.134:" + port;    //Swagger项目服务的URL
+    public String SWAGGER_URL = "http:121.89.195.134:" + port;    //Swagger项目服务的URL
 
     //验证的页面http://127.0.0.1:8080/swagger-ui.html
     @Bean

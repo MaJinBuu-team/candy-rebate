@@ -48,8 +48,28 @@ spring:
     lettuce:
       shutdown-timeout: 0
     password: "!QAZxsw2kwz"
+
+
+
+  #邮箱配置
   mail:
-    username: "FatMaJin_Buu@126.com"
+    host: smtp.126.com
+    username: FatMaJin_Buu@126.com
+    password: ZFNGUITDXBYJLKWF
+    default-encoding: UTF-8
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          socketFactory:
+            port: 465
+            class: javax.net.ssl.SSLSocketFactory
+            fallbock: false
+    port: 465
+
   profiles:
     active: 'dev'
   # freemarker模板引擎

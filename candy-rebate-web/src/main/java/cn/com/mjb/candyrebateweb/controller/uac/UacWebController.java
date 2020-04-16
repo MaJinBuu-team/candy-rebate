@@ -4,6 +4,7 @@ import cn.com.mjb.candyrebatecore.module.dto.MessageBox;
 import cn.com.mjb.candyrebateweb.module.dto.UserWebRegisterDto;
 import cn.com.mjb.candyrebateweb.service.uac.UacWebService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,7 @@ public class UacWebController {
      * @return messageBox
      */
     @PostMapping(value = "/register")
+    @ApiOperation(httpMethod = "POST", value = "用户注册")
     public MessageBox register(@RequestBody UserWebRegisterDto userWebRegisterDto) {
 
         uacWebService.register(userWebRegisterDto);
@@ -33,6 +35,7 @@ public class UacWebController {
     }
 
     @PostMapping("/login")
+    @ApiOperation(httpMethod = "POST", value = "用户登录")
     public MessageBox login() {
         return MessageBox.ok();
     }
